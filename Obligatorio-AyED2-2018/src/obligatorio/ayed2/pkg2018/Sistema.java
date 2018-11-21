@@ -15,15 +15,32 @@ public class Sistema {
     };
     
     public TipoRet crearSistemaReservas(){
-        return null;
+      
+        SistemaDeReservas sistemaDeReservas = new SistemaDeReservas();       
+        return TipoRet.OK;
     }
     
     public TipoRet destruirSistemaReservas(){
+        
+        SistemaDeReservas sistemaDeReservas = new SistemaDeReservas();       
+        sistemaDeReservas = null;
         return TipoRet.NO_IMPLEMENTADA;
     }
     
     public TipoRet registrarRestaurante(String Ciudad, String Nombre, int Puntaje, int Capacidad){
-        return TipoRet.NO_IMPLEMENTADA;
+        if (Puntaje >= 1 && Puntaje <= 5) 
+            return TipoRet.ERROR_1 ;
+        
+        if (Capacidad > 0) 
+            return TipoRet.ERROR_2 ;
+        
+        if ()
+            return TipoRet.ERROR_3 ;
+        
+        Restaurante pRestaurante = new Restaurante(Ciudad, Nombre, Puntaje, Capacidad);
+        SistemaDeReservas sistemaDeReservas = new SistemaDeReservas();
+        sistemaDeReservas.AddRestaurante(pRestaurante);
+        return TipoRet.OK;
     }
     
     public TipoRet ingresarServicio(String Ciudad, String Hotel, String Servicio){
