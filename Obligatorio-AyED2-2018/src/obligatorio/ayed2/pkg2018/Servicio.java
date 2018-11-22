@@ -3,7 +3,7 @@ package obligatorio.ayed2.pkg2018;
 public class Servicio {
 
     private String Ciudad; 
-    private Restaurante Restaurante; 
+    private String Restaurante; 
     private String Servicio;
     
     // <editor-fold defaultstate="collapsed" desc=" Setters">   
@@ -11,7 +11,7 @@ public class Servicio {
         this.Ciudad = Ciudad;
     }
 
-    public void setRestaurante(Restaurante Restaurante) {
+    public void setRestaurante(String Restaurante) {
         this.Restaurante = Restaurante;
     }
 
@@ -25,7 +25,7 @@ public class Servicio {
         return Ciudad;
     }
 
-    public Restaurante getRestaurante() {
+    public String getRestaurante() {
         return Restaurante;
     }
 
@@ -36,7 +36,7 @@ public class Servicio {
    
 // </editor-fold>  
 
-    public Servicio(String Ciudad, Restaurante Restaurante, String Servicio) {
+    public Servicio(String Ciudad, String Restaurante, String Servicio) {
         this.Ciudad = Ciudad;
         this.Restaurante = Restaurante;
         this.Servicio = Servicio;

@@ -43,7 +43,7 @@ public class Obligatorio_AyED2_2018 {
         p.ver(s.registrarRestaurante("Colonia", "Four Season", 5, 300), Sistema.TipoRet.OK, "Se agrega el restaurante Four Season de Colonia");
         p.ver(s.registrarRestaurante("Colonia", "Centro", 2, 20), Sistema.TipoRet.OK, "Se agrega el restaurante Centro de Colonia");
         p.ver(s.registrarRestaurante("Colonia", "Urbano", 2, 20), Sistema.TipoRet.OK, "Se agrega el restaurante Urbano de Colonia");
-        s.listarRestaurantesRanking();
+       s.listarRestaurantesRanking();
         finPrueba(" Fin PRUEBA 1");
     }
     

@@ -11,8 +11,15 @@ public class SistemaDeReservas {
 
     private static SistemaDeReservas _instancia;
 
-     public static SistemaDeReservas obtenerInstancia() {
+    public static SistemaDeReservas obtenerInstancia() {
         return (_instancia == null) ? _instancia = new SistemaDeReservas() : _instancia;
+    }
+
+    public SistemaDeReservas() {
+        Comentario = new ArrayList<Comentario>();
+        Reserva = new ArrayList<Reserva>();
+        Restaurante = new ArrayList<Restaurante>();
+        Servicio = new ArrayList< Servicio>();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" Setters">   
@@ -33,7 +40,6 @@ public class SistemaDeReservas {
     }
 
     // </editor-fold>     
-
     // <editor-fold defaultstate="collapsed" desc=" Gets">   
     public ArrayList<Comentario> getComentario() {
         return Comentario;
@@ -52,26 +58,21 @@ public class SistemaDeReservas {
     }
 
 // </editor-fold>  
-    
     // <editor-fold defaultstate="collapsed" desc=" Adds">   
-    public ArrayList<Comentario> AddComentario(Comentario pComentario) {
+    public void AddComentario(Comentario pComentario) {
         Comentario.add(pComentario);
-        return Comentario;
     }
 
-    public ArrayList<Reserva> AddReserva(Reserva pReserva) {
+    public void AddReserva(Reserva pReserva) {
         Reserva.add(pReserva);
-        return Reserva;
     }
 
-    public ArrayList<Restaurante> AddRestaurante(Restaurante pRestaurante) {
+    public void AddRestaurante(Restaurante pRestaurante) {
         Restaurante.add(pRestaurante);
-        return Restaurante;
     }
 
-    public ArrayList<Servicio> AddServicio(Servicio pServicio) {
+    public void AddServicio(Servicio pServicio) {
         Servicio.add(pServicio);
-        return Servicio;
     }
 
 // </editor-fold>  
