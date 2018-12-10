@@ -51,11 +51,12 @@ public class Obligatorio_AyED2_2018 {
         s.crearSistemaReservas();
         System.out.println("Se crea el Sistema de Reservas vacio");
         tituloPrueba("PRUEBA 2: INGRESAR SERVICIO");
-        p.ver(s.registrarRestaurante("Colonia", "Urbano", 3, 20), Sistema.TipoRet.OK, "Se agrega el restaurante Urbano de Colonia");
+       
+        Restaurante pRestaurante = new Restaurante("Colonia", "Urbano", 2, 20);
         
-        p.ver(s.ingresarServicio("Colonia", "Urbano", "Desayuno continental"), Sistema.TipoRet.OK, "Se agrega Desayuno continental a restaurante Urbano de Colonia");
-        p.ver(s.ingresarServicio("Colonia", "Urbano", "TV Cable"), Sistema.TipoRet.OK, "Se agrega TV Cable a restaurante Urbano de Colonia");
-        p.ver(s.ingresarServicio("Colonia", "Urbano", "Servicio a la mesa"), Sistema.TipoRet.OK, "Se agrega Servicio a la mesa a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia",pRestaurante, "Desayuno continental"), Sistema.TipoRet.OK, "Se agrega Desayuno continental a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia", pRestaurante, "TV Cable"), Sistema.TipoRet.OK, "Se agrega TV Cable a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia",pRestaurante, "Servicio a la mesa"), Sistema.TipoRet.OK, "Se agrega Servicio a la mesa a restaurante Urbano de Colonia");
         s.listarServicios("Colonia", "Urbano");
         finPrueba(" Fin PRUEBA 2");
     }
@@ -64,14 +65,15 @@ public class Obligatorio_AyED2_2018 {
         s.crearSistemaReservas();
         System.out.println("Se crea el Sistema de Reservas vacio");
         tituloPrueba("PRUEBA 3: BORRAR SERVICIO");
-        p.ver(s.registrarRestaurante("Colonia", "Urbano", 3, 20), Sistema.TipoRet.OK, "Se agrega el restaurante Urbano de Colonia");
+       
+         Restaurante pRestaurante = new Restaurante("Colonia", "Urbano", 2, 20);
         
-        p.ver(s.ingresarServicio("Colonia", "Urbano", "Desayuno continental"), Sistema.TipoRet.OK, "Se agrega Desayuno continental a restaurante Urbano de Colonia");
-        p.ver(s.ingresarServicio("Colonia", "Urbano", "TV Cable"), Sistema.TipoRet.OK, "Se agrega TV Cable a restaurante Urbano de Colonia");
-        p.ver(s.ingresarServicio("Colonia", "Urbano", "Servicio a la mesa"), Sistema.TipoRet.OK, "Se agrega Servicio a la mesa a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia", pRestaurante, "Desayuno continental"), Sistema.TipoRet.ERROR_3, "Se agrega Desayuno continental a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia", pRestaurante, "TV Cable"), Sistema.TipoRet.ERROR_3, "Se agrega TV Cable a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia", pRestaurante, "Servicio a la mesa"), Sistema.TipoRet.ERROR_3, "Se agrega Servicio a la mesa a restaurante Urbano de Colonia");
         s.listarServicios("Colonia", "Urbano");
         
-        p.ver(s.borrarServicio("Colonia", "Urbano", "Desayuno continental"), Sistema.TipoRet.OK, "Se borra Desayuno continental a restaurante Urbano de Colonia");
+        p.ver(s.borrarServicio("Colonia", pRestaurante, "Desayuno continental"), Sistema.TipoRet.OK, "Se borra Desayuno continental a restaurante Urbano de Colonia");
         s.listarServicios("Colonia", "Urbano");
         finPrueba(" Fin PRUEBA 3");
     }

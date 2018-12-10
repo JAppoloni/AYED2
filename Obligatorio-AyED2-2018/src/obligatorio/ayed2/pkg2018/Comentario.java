@@ -2,6 +2,7 @@ package obligatorio.ayed2.pkg2018;
 
 public class Comentario {
 
+    private int IdComentario;
     private String Ciudad;
     private Restaurante Restaurante;
     private String Comentario;
@@ -24,6 +25,10 @@ public class Comentario {
         this.Ranking = Ranking;
     }
 
+    public int getIdComentario() {
+        return IdComentario;
+    }
+
     // </editor-fold>     
     // <editor-fold defaultstate="collapsed" desc=" Gets">   
     public String getCiudad() {
@@ -41,13 +46,20 @@ public class Comentario {
     public int getRanking() {
         return Ranking;
     }
+
+    public void setIdComentario(int IdComentario) {
+        this.IdComentario = IdComentario;
+    }
+    
 // </editor-fold>  
 
-    public Comentario(String Ciudad, Restaurante Restaurante, String Comentario, int Ranking) {
+    public Comentario(int IdComentario, String Ciudad, Restaurante Restaurante, String Comentario, int Ranking) {
+        this.IdComentario = IdComentario;
         this.Ciudad = Ciudad;
         this.Restaurante = Restaurante;
         this.Comentario = Comentario;
         this.Ranking = Ranking;
     }
 
+   
 }
