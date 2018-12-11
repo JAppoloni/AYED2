@@ -10,8 +10,8 @@ public class Caja_Negra {
     public static Hashtable<String, String> Lista_DE_PK = new Hashtable<String, String>();
 
     public Caja_Negra() {
-        Lista_DE_PK.put("Comentario", "IdComentario");
-        Lista_DE_PK.put("Reserva", "IdReserva");
+        Lista_DE_PK.put("Comentario", "Comentario");
+        Lista_DE_PK.put("Reserva", "Cliente");
         Lista_DE_PK.put("Restaurante", "Ciudad");
         Lista_DE_PK.put("Restaurante", "Nombre");
         Lista_DE_PK.put("Servicio", "Servicio");

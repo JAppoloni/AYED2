@@ -90,4 +90,8 @@ public class SistemaDeReservas {
     }
 
 // </editor-fold>  
+
+    void EliminarSistema() {
+        _instancia=null;
+    }
 }

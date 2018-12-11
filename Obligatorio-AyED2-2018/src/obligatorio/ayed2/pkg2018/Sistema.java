@@ -18,8 +18,8 @@ public class Sistema {
     }
 
     public TipoRet destruirSistemaReservas() {
-        sistemaDeReservas = null;
-        return TipoRet.NO_IMPLEMENTADA;
+        sistemaDeReservas.EliminarSistema();
+        return TipoRet.OK;
     }
 
     public TipoRet registrarRestaurante(String Ciudad, String Nombre, int Puntaje, int Capacidad) {
@@ -75,7 +75,7 @@ public class Sistema {
         return TipoRet.OK;
     }
 
-    public TipoRet ingresarComentario(String Ciudad, String Hotel, String Comentario, int Ranking) {
+    public TipoRet ingresarComentario(String Ciudad, String Restaurante, String Comentario, int Ranking) {
         return TipoRet.NO_IMPLEMENTADA;
     }
 

@@ -42,7 +42,7 @@ public class Obligatorio_AyED2_2018 {
         p.ver(s.registrarRestaurante("Colonia", "Urbano", 3, 20), Sistema.TipoRet.OK, "Se agrega el restaurante Urbano de Colonia");
         p.ver(s.registrarRestaurante("Colonia", "Four Season", 5, 300), Sistema.TipoRet.OK, "Se agrega el restaurante Four Season de Colonia");
         p.ver(s.registrarRestaurante("Colonia", "Centro", 2, 20), Sistema.TipoRet.OK, "Se agrega el restaurante Centro de Colonia");
-        p.ver(s.registrarRestaurante("Colonia", "Urbano", 2, 20), Sistema.TipoRet.OK, "Se agrega el restaurante Urbano de Colonia");
+        p.ver(s.registrarRestaurante("Colonia", "Urbano", 2, 20), Sistema.TipoRet.ERROR_3, " Se espera ERROR:Se agrega el restaurante Urbano de Colonia");
        s.listarRestaurantesRanking();
         finPrueba(" Fin PRUEBA 1");
     }
@@ -68,9 +68,9 @@ public class Obligatorio_AyED2_2018 {
        
          Restaurante pRestaurante = new Restaurante("Colonia", "Urbano", 2, 20);
         
-        p.ver(s.ingresarServicio("Colonia", pRestaurante, "Desayuno continental"), Sistema.TipoRet.ERROR_3, "Se agrega Desayuno continental a restaurante Urbano de Colonia");
-        p.ver(s.ingresarServicio("Colonia", pRestaurante, "TV Cable"), Sistema.TipoRet.ERROR_3, "Se agrega TV Cable a restaurante Urbano de Colonia");
-        p.ver(s.ingresarServicio("Colonia", pRestaurante, "Servicio a la mesa"), Sistema.TipoRet.ERROR_3, "Se agrega Servicio a la mesa a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia", pRestaurante, "Desayuno continental"), Sistema.TipoRet.OK, "Se agrega Desayuno continental a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia", pRestaurante, "TV Cable"), Sistema.TipoRet.OK, "Se agrega TV Cable a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia", pRestaurante, "Servicio a la mesa"), Sistema.TipoRet.OK, "Se agrega Servicio a la mesa a restaurante Urbano de Colonia");
         s.listarServicios("Colonia", "Urbano");
         
         p.ver(s.borrarServicio("Colonia", pRestaurante, "Desayuno continental"), Sistema.TipoRet.OK, "Se borra Desayuno continental a restaurante Urbano de Colonia");

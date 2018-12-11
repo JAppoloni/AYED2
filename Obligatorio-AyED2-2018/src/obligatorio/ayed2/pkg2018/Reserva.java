@@ -3,7 +3,6 @@ package obligatorio.ayed2.pkg2018;
 public class Reserva {
 
     private Cliente cliente;
-    private int IdReserva;
     private String Ciudad;
     private Restaurante Restaurante;
 
@@ -18,10 +17,6 @@ public class Reserva {
 
     public void setRestaurante(Restaurante Restaurante) {
         this.Restaurante = Restaurante;
-    }
-
-    public void setIdReserva(int IdReserva) {
-        this.IdReserva = IdReserva;
     }
     
     // </editor-fold>     
@@ -39,16 +34,10 @@ public class Reserva {
         return Restaurante;
     }
 
-    public int getIdReserva() {
-        return IdReserva;
-    }
-    
-
 // </editor-fold>  
 
     public Reserva(Cliente cliente, int IdReserva, String Ciudad, Restaurante Restaurante) {
         this.cliente = cliente;
-        this.IdReserva = IdReserva;
         this.Ciudad = Ciudad;
         this.Restaurante = Restaurante;
     }
