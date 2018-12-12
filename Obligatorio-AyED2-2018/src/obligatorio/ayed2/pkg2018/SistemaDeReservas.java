@@ -11,6 +11,8 @@ public class SistemaDeReservas {
 
     private static SistemaDeReservas _instancia;
 
+    public static Caja_Negra pCaja_Negra;
+
     public static SistemaDeReservas obtenerInstancia() {
         return (_instancia == null) ? _instancia = new SistemaDeReservas() : _instancia;
     }
@@ -64,16 +66,32 @@ public class SistemaDeReservas {
     }
 
     public void AddReserva(Reserva pReserva) {
-        Reserva.add(pReserva);
+        pCaja_Negra = new Caja_Negra();
+        ArrayList<Object> objectList = new ArrayList<Object>(Reserva);
+        int a = pCaja_Negra.Ubicacion(objectList, pReserva);
+        a = (a <=  -1) ? 0 : a;
+        Reserva.add(a, pReserva);
     }
 
     public void AddRestaurante(Restaurante pRestaurante) {
-        Restaurante.add(pRestaurante);
+        pCaja_Negra = new Caja_Negra();
+        ArrayList<Object> objectList = new ArrayList<Object>(Restaurante);
+        int a = pCaja_Negra.Ubicacion(objectList, pRestaurante);
+        a = (a <= -1) ? 0 : a;
+        Restaurante.add(a, pRestaurante);
     }
 
     public void AddServicio(Servicio pServicio) {
-        Servicio.add(pServicio);
+        pCaja_Negra = new Caja_Negra();
+        ArrayList<Object> objectList = new ArrayList<Object>(Servicio);
+        int a = pCaja_Negra.Ubicacion(objectList, pServicio);
+        a = (a <=  -1) ? 0 : a;
+        Servicio.add(a, pServicio);
     }
 
 // </editor-fold>  
+
+    void EliminarSistema() {
+        _instancia=null;
+    }
 }

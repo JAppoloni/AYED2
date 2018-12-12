@@ -1,11 +1,15 @@
 package obligatorio.ayed2.pkg2018;
 
+import java.util.ArrayList;
+
 public class Restaurante {
-    
+
     private String Ciudad;
     private String Nombre;
     private int Puntaje;
-    private  int Capacidad;
+    private int Capacidad;
+    private ArrayList<Comentario> ListaComentario;
+    private ArrayList<Servicio> ListaServicio;
 
     // <editor-fold defaultstate="collapsed" desc=" Setters">   
     public void setCiudad(String Ciudad) {
@@ -24,7 +28,7 @@ public class Restaurante {
         this.Capacidad = Capacidad;
     }
     // </editor-fold>     
-    
+
     // <editor-fold defaultstate="collapsed" desc=" Gets">   
     public String getCiudad() {
         return Ciudad;
