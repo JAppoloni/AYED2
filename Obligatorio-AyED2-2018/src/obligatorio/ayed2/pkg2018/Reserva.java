@@ -2,13 +2,13 @@ package obligatorio.ayed2.pkg2018;
 
 public class Reserva {
 
-    private Cliente cliente;
+    private int CI;
     private String Ciudad;
     private Restaurante Restaurante;
 
     // <editor-fold defaultstate="collapsed" desc=" Setters">   
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCI(int cliente) {
+        this.CI = cliente;
     }
 
     public void setCiudad(String Ciudad) {
@@ -22,8 +22,8 @@ public class Reserva {
     // </editor-fold>     
 
     // <editor-fold defaultstate="collapsed" desc=" Gets">   
-    public Cliente getCliente() {
-        return cliente;
+    public int getCI() {
+        return CI;
     }
 
     public String getCiudad() {
@@ -36,8 +36,8 @@ public class Reserva {
 
 // </editor-fold>  
 
-    public Reserva(Cliente cliente, int IdReserva, String Ciudad, Restaurante Restaurante) {
-        this.cliente = cliente;
+    public Reserva( int CI, String Ciudad, Restaurante Restaurante) {
+        this.CI = CI;
         this.Ciudad = Ciudad;
         this.Restaurante = Restaurante;
     }

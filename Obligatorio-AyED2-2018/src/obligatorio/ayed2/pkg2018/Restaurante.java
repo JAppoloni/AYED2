@@ -1,16 +1,12 @@
 package obligatorio.ayed2.pkg2018;
 
-import java.util.ArrayList;
-
 public class Restaurante {
 
     private String Ciudad;
     private String Nombre;
     private int Puntaje;
     private int Capacidad;
-    private ArrayList<Comentario> ListaComentario;
-    private ArrayList<Servicio> ListaServicio;
-
+    
     // <editor-fold defaultstate="collapsed" desc=" Setters">   
     public void setCiudad(String Ciudad) {
         this.Ciudad = Ciudad;
