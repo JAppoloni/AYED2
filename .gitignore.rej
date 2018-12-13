@@ -1,0 +1,8 @@
+diff a/.gitignore b/.gitignore	(rejected hunks)
+@@ -1,2 +1,3 @@
+ /Obligatorio-AyED2-2018/nbproject/private/
+-/Obligatorio-AyED2-2018/build/
+\ No newline at end of file
++/Obligatorio-AyED2-2018/build/
++/Obligatorio-AyED2-2018/dist/
+\ No newline at end of file
