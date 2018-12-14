@@ -68,9 +68,9 @@ public class Obligatorio_AyED2_2018 {
        
          Restaurante pRestaurante = new Restaurante("Colonia", "Urbano", 2, 20);
         
-        p.ver(s.ingresarServicio("Colonia", pRestaurante, "Desayuno continental"), Sistema.TipoRet.OK, "Se agrega Desayuno continental a restaurante Urbano de Colonia");
-        p.ver(s.ingresarServicio("Colonia", pRestaurante, "TV Cable"), Sistema.TipoRet.OK, "Se agrega TV Cable a restaurante Urbano de Colonia");
-        p.ver(s.ingresarServicio("Colonia", pRestaurante, "Servicio a la mesa"), Sistema.TipoRet.OK, "Se agrega Servicio a la mesa a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia", pRestaurante, "Desayuno continental"), Sistema.TipoRet.ERROR_3, "Se agrega Desayuno continental a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia", pRestaurante, "TV Cable"), Sistema.TipoRet.ERROR_3, "Se agrega TV Cable a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia", pRestaurante, "Servicio a la mesa"), Sistema.TipoRet.ERROR_3, "Se agrega Servicio a la mesa a restaurante Urbano de Colonia");
         s.listarServicios("Colonia", "Urbano");
         
         p.ver(s.borrarServicio("Colonia", pRestaurante, "Desayuno continental"), Sistema.TipoRet.OK, "Se borra Desayuno continental a restaurante Urbano de Colonia");
@@ -82,10 +82,9 @@ public class Obligatorio_AyED2_2018 {
         s.crearSistemaReservas();
         System.out.println("Se crea el Sistema de Reservas vacio");
         tituloPrueba("PRUEBA 4: INGRESAR COMENTARIO");
-        p.ver(s.registrarRestaurante("Colonia", "Urbano", 3, 20), Sistema.TipoRet.OK, "Se agrega el restaurante Urbano de Colonia");
-        
+              
         p.ver(s.ingresarComentario("Colonia", "Urbano", "A gusto", 3), Sistema.TipoRet.OK, "Se ingresa comentario para restaurante Urbano de Colonia");
-        p.ver(s.ingresarComentario("Colonia", "Urbano", "Mala Atención", 0), Sistema.TipoRet.OK, "Se ingresa comentario para restaurante Urbano de Colonia");
+        p.ver(s.ingresarComentario("Colonia", "Urbano", "Mala Atención", 0), Sistema.TipoRet.ERROR_1, "Se ingresa comentario para restaurante Urbano de Colonia");
         p.ver(s.ingresarComentario("Colonia", "Urbano", "Lo que esperabamos", 4), Sistema.TipoRet.OK, "Se ingresa comentario para restaurante Urbano de Colonia");
         
         s.listarComentarios("Colonia", "Urbano");
@@ -96,8 +95,7 @@ public class Obligatorio_AyED2_2018 {
         s.crearSistemaReservas();
         System.out.println("Se crea el Sistema de Reservas vacio");
         tituloPrueba("PRUEBA 5: REALIZAR RESERVA");
-        p.ver(s.registrarRestaurante("Colonia", "Urbano", 3, 2), Sistema.TipoRet.OK, "Se agrega el restaurante Urbano de Colonia");
-        
+ 
         p.ver(s.realizarReserva(34175426, "Colonia", "Urbano"), Sistema.TipoRet.OK, "Realiza una reserva para restaurante Urbano de Colonia, el cliente 34175426");
         p.ver(s.realizarReserva(24515694, "Colonia", "Urbano"), Sistema.TipoRet.OK, "Realiza una reserva para restaurante Urbano de Colonia, el cliente 24515694");
         p.ver(s.realizarReserva(43547816, "Colonia", "Urbano"), Sistema.TipoRet.OK, "Realiza una reserva para restaurante Urbano de Colonia, el cliente 43547816");
@@ -111,8 +109,7 @@ public class Obligatorio_AyED2_2018 {
         s.crearSistemaReservas();
         System.out.println("Se crea el Sistema de Reservas vacio");
         tituloPrueba("PRUEBA 6: CANCELAR RESERVA");
-        p.ver(s.registrarRestaurante("Colonia", "Urbano", 3, 2), Sistema.TipoRet.OK, "Se agrega el restaurante Urbano de Colonia");
-        
+
         p.ver(s.realizarReserva(34175426, "Colonia", "Urbano"), Sistema.TipoRet.OK, "Realiza una reserva para restaurante Urbano de Colonia, el cliente 34175426");
         p.ver(s.realizarReserva(24515694, "Colonia", "Urbano"), Sistema.TipoRet.OK, "Realiza una reserva para restaurante Urbano de Colonia, el cliente 24515694");
         p.ver(s.realizarReserva(43547816, "Colonia", "Urbano"), Sistema.TipoRet.OK, "Realiza una reserva para restaurante Urbano de Colonia, el cliente 43547816");
