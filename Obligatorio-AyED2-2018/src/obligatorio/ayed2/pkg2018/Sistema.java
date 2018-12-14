@@ -45,7 +45,7 @@ public class Sistema {
 
         Servicio pServicio = new Servicio(Ciudad, Restaurante, Servicio);
         ArrayList<Object> objectList = new ArrayList<Object>(sistemaDeReservas.getServicio());
-        
+
         if (caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) > 0) {
             return TipoRet.ERROR_3;
         }
@@ -68,8 +68,8 @@ public class Sistema {
         if (!AuxpServicio.getRestaurante().getNombre().equals(Restaurante.getNombre())) {
             return TipoRet.ERROR_1;
         }
-        
-        ArrayList<Servicio> list =sistemaDeReservas.getServicio();
+
+        ArrayList<Servicio> list = sistemaDeReservas.getServicio();
         list.remove(ID);
         sistemaDeReservas.setServicio(list);
         return TipoRet.OK;
@@ -87,12 +87,41 @@ public class Sistema {
         return TipoRet.NO_IMPLEMENTADA;
     }
 
-    public TipoRet listarServicios(String Ciudad, String Hotel) {
-        return TipoRet.NO_IMPLEMENTADA;
+    public TipoRet listarServicios(String Ciudad, String Restaurante) {
+        ArrayList<Servicio> servicios = new ArrayList<Servicio>(sistemaDeReservas.getServicio());
+        boolean vacia = true;
+        System.out.println("Rest: " + Restaurante + " - Ciudad: " + Ciudad);
+        for (Servicio s : servicios) {
+            if (s.getRestaurante().getNombre().toUpperCase().equals(Restaurante.toUpperCase()) && s.getCiudad().toUpperCase().equals(Ciudad.toUpperCase())) {
+                System.out.println(" - " + s.getServicio());
+                vacia = false;
+            }
+
+        }
+        if (!vacia) {
+            return TipoRet.OK;
+        } else {
+            System.out.println("No se encontraron datos");
+            return TipoRet.ERROR_1;
+        }
     }
 
     public TipoRet listarRestauranteCiudad(String Ciudad) {
-        return TipoRet.NO_IMPLEMENTADA;
+       ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
+       boolean vacia = true;
+       System.out.println("Restaurantes en "+Ciudad);
+       for(Comentario c:comentarios){
+           if(c.getCiudad().toUpperCase().equals(Ciudad.toUpperCase())){
+               System.out.println(" - "+c.getRestaurante().getNombre()+" Puntaje: "+c.getRestaurante().getPuntaje()+" Ranking: "+ c.getRanking());
+               vacia=false;
+           }
+       }
+       if (!vacia) {
+            return TipoRet.OK;
+        } else {
+            System.out.println("No se encontraron datos");
+            return TipoRet.ERROR_1;
+        }
     }
 
     public TipoRet listarRestaurantesRanking() {
