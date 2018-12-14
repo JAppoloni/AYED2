@@ -49,26 +49,16 @@ public class Sistema {
 
         Servicio pServicio = new Servicio(Ciudad, Restaurante, Servicio);
         ArrayList<Object> objectList = new ArrayList<Object>(sistemaDeReservas.getServicio());
-
         if (caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) > 0) {
-
             caja_Negra = new Caja_Negra();
-
             if (caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) >= 0) {
-
                 return TipoRet.ERROR_3;
             }
             sistemaDeReservas.AddServicio(pServicio);
-
             return TipoRet.OK;
         }
-
-    
-    
-
-    
-
-    
+        return TipoRet.ERROR_1;
+    }
 
     public TipoRet borrarServicio(String Ciudad, Restaurante Restaurante, String Servicio) {
 
@@ -180,10 +170,10 @@ public class Sistema {
         ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
         Collections.sort(comentarios);
         if (comentarios.isEmpty()) {
-            System.out.println("Ciudad - Restaurantes - Ranking ");
-            int i=1;
+            System.out.println("Ciudad - Restaurantes - Ranking \n");
+            int i = 1;
             for (Comentario c : comentarios) {
-                System.out.println(i++ +" - "+c.getCiudad()+" - "+c.getRestaurante().getNombre()+" - "+c.getRanking());
+                System.out.println(i++ + " - " + c.getCiudad() + " - " + c.getRestaurante().getNombre() + " - " + c.getRanking());
             }
             return TipoRet.OK;
         } else {
