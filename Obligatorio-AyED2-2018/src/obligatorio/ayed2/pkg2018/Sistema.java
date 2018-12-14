@@ -1,6 +1,9 @@
 package obligatorio.ayed2.pkg2018;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Sistema {
 
@@ -46,20 +49,26 @@ public class Sistema {
 
         Servicio pServicio = new Servicio(Ciudad, Restaurante, Servicio);
         ArrayList<Object> objectList = new ArrayList<Object>(sistemaDeReservas.getServicio());
-<<<<<<< HEAD
 
         if (caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) > 0) {
-=======
-        caja_Negra = new Caja_Negra();
 
-        if (caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) >= 0) {
->>>>>>> e6b5c1538b5c5858f1147ab475f5c5910ec7b28d
-            return TipoRet.ERROR_3;
+            caja_Negra = new Caja_Negra();
+
+            if (caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) >= 0) {
+
+                return TipoRet.ERROR_3;
+            }
+            sistemaDeReservas.AddServicio(pServicio);
+
+            return TipoRet.OK;
         }
-        sistemaDeReservas.AddServicio(pServicio);
 
-        return TipoRet.OK;
-    }
+    
+    
+
+    
+
+    
 
     public TipoRet borrarServicio(String Ciudad, Restaurante Restaurante, String Servicio) {
 
@@ -150,16 +159,16 @@ public class Sistema {
     }
 
     public TipoRet listarRestauranteCiudad(String Ciudad) {
-       ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
-       boolean vacia = true;
-       System.out.println("Restaurantes en "+Ciudad);
-       for(Comentario c:comentarios){
-           if(c.getCiudad().toUpperCase().equals(Ciudad.toUpperCase())){
-               System.out.println(" - "+c.getRestaurante().getNombre()+" Puntaje: "+c.getRestaurante().getPuntaje()+" Ranking: "+ c.getRanking());
-               vacia=false;
-           }
-       }
-       if (!vacia) {
+        ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
+        boolean vacia = true;
+        System.out.println("Restaurantes en " + Ciudad);
+        for (Comentario c : comentarios) {
+            if (c.getCiudad().toUpperCase().equals(Ciudad.toUpperCase())) {
+                System.out.println(" - " + c.getRestaurante().getNombre() + " Puntaje: " + c.getRestaurante().getPuntaje() + " Ranking: " + c.getRanking());
+                vacia = false;
+            }
+        }
+        if (!vacia) {
             return TipoRet.OK;
         } else {
             System.out.println("No se encontraron datos");
@@ -168,7 +177,19 @@ public class Sistema {
     }
 
     public TipoRet listarRestaurantesRanking() {
-        return TipoRet.NO_IMPLEMENTADA;
+        ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
+        Collections.sort(comentarios);
+        if (comentarios.isEmpty()) {
+            System.out.println("Ciudad - Restaurantes - Ranking ");
+            int i=1;
+            for (Comentario c : comentarios) {
+                System.out.println(i++ +" - "+c.getCiudad()+" - "+c.getRestaurante().getNombre()+" - "+c.getRanking());
+            }
+            return TipoRet.OK;
+        } else {
+            System.out.println("No se encontraron datos");
+            return TipoRet.ERROR_1;
+        }
     }
 
     public TipoRet listarComentarios(String Ciudad, String Restaurante) {

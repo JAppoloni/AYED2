@@ -1,6 +1,6 @@
 package obligatorio.ayed2.pkg2018;
 
-public class Comentario {
+public class Comentario implements Comparable<Comentario>{
 
     private String Ciudad;
     private Restaurante Restaurante;
@@ -51,5 +51,9 @@ public class Comentario {
         this.Ranking = Ranking;
     }
 
-   
+    public int compareTo(Comentario o) {
+        String a=String.valueOf(Ranking);
+        String b=String.valueOf(o.getRanking());
+        return a.compareTo(b);
+    }
 }
