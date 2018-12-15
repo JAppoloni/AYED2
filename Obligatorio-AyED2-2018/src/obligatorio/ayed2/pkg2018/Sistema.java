@@ -128,6 +128,7 @@ public class Sistema {
 
         return TipoRet.OK;
     }
+////////////////////////////////////////
 
     public TipoRet listarServicios(String Ciudad, String Restaurante) {
         ArrayList<Servicio> servicios = new ArrayList<Servicio>(sistemaDeReservas.getServicio());
@@ -138,23 +139,22 @@ public class Sistema {
                 System.out.println(" - " + s.getServicio());
                 vacia = false;
             }
-
         }
         if (!vacia) {
             return TipoRet.OK;
         } else {
-            System.out.println("No se encontraron datos");
+            System.out.println("No existen servicios registrados en el restaurante" + Restaurante + " " + Ciudad);
             return TipoRet.ERROR_1;
         }
     }
 
     public TipoRet listarRestauranteCiudad(String Ciudad) {
-        ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
+        ArrayList<Restaurante> restaurantes = new ArrayList<Restaurante>(sistemaDeReservas.getRestaurante());
         boolean vacia = true;
         System.out.println("Restaurantes en " + Ciudad);
-        for (Comentario c : comentarios) {
-            if (c.getCiudad().toUpperCase().equals(Ciudad.toUpperCase())) {
-                System.out.println(" - " + c.getRestaurante().getNombre() + " Puntaje: " + c.getRestaurante().getPuntaje() + " Ranking: " + c.getRanking());
+        for (Restaurante r : restaurantes) {
+            if (r.getCiudad().toUpperCase().equals(Ciudad.toUpperCase())) {
+                System.out.println(" - " + r.getNombre() + " Puntaje: " + r.getPuntaje() + " Ranking: " + calcularRanking(r.getNombre(), r.getCiudad()));
                 vacia = false;
             }
         }
@@ -173,7 +173,7 @@ public class Sistema {
             System.out.println("Ciudad - Restaurantes - Ranking \n");
             int i = 1;
             for (Comentario c : comentarios) {
-                System.out.println(i++ + " - " + c.getCiudad() + " - " + c.getRestaurante().getNombre() + " - " + c.getRanking());
+                System.out.println(i++ + " - " + c.getCiudad() + " - " + c.getRestaurante().getNombre() + " - " + calcularRanking(c.getRestaurante().getNombre(), c.getRestaurante().getCiudad()));
             }
             return TipoRet.OK;
         } else {
@@ -183,11 +183,42 @@ public class Sistema {
     }
 
     public TipoRet listarComentarios(String Ciudad, String Restaurante) {
-        return TipoRet.NO_IMPLEMENTADA;
+        ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
+        boolean vacia = true;
+        System.out.println("Comentarios de " + Restaurante + " en " + Ciudad + " : \n");
+        for (Comentario c : comentarios) {
+            if (c.getCiudad().toUpperCase().equals(Ciudad.toUpperCase()) && c.getRestaurante().getNombre().toUpperCase().equals(Restaurante.toUpperCase())) {
+                System.out.println(" - " + c.getRestaurante().getNombre() + " Puntaje: " + c.getRestaurante().getPuntaje() + " Ranking: " + c.getRanking());
+                vacia = false;
+            }
+        }
+        if (!vacia) {
+            return TipoRet.OK;
+        } else {
+            System.out.println("No se encontraron datos");
+            return TipoRet.ERROR_1;
+        }
     }
 
     public TipoRet listarEspera(String Ciudad, String Restaurante) {
         return TipoRet.NO_IMPLEMENTADA;
+    }
+
+    private String calcularRanking(String restaurante, String ciudad) {
+        ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
+        int suma = 0;
+        int aux = 0;
+        for (Comentario c : comentarios) {
+            if (c.getRestaurante().getNombre().toUpperCase().equals(restaurante.toUpperCase()) && c.getRestaurante().getCiudad().toUpperCase().equals(ciudad.toUpperCase())) {
+                suma += c.getRanking();
+                aux++;
+            }
+        }
+        if (aux > 0) {
+            return String.valueOf(suma / aux);
+        } else {
+            return "No tiene comentarios";
+        }
     }
 
 }
