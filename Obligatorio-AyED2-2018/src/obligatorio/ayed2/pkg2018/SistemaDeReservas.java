@@ -11,6 +11,7 @@ public class SistemaDeReservas {
     private ArrayList<Reserva> Reserva;
     private ArrayList<Restaurante> Restaurante;
     private ArrayList<Servicio> Servicio;
+     private ArrayList<RestauranteRanking> RestauranteRanking;
 
     private static SistemaDeReservas _instancia;
 
@@ -25,6 +26,7 @@ public class SistemaDeReservas {
         Reserva = new ArrayList<Reserva>();
         Restaurante = new ArrayList<Restaurante>();
         Servicio = new ArrayList< Servicio>();
+        RestauranteRanking = new ArrayList<RestauranteRanking>();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" Setters">   
@@ -43,6 +45,9 @@ public class SistemaDeReservas {
     public void setServicio(ArrayList<Servicio> Servicio) {
         this.Servicio = Servicio;
     }
+     public void setRestauranteRanking(ArrayList<RestauranteRanking> RR) {
+        this.RestauranteRanking = RR;
+    }
 
     // </editor-fold>     
     // <editor-fold defaultstate="collapsed" desc=" Gets">   
@@ -60,6 +65,9 @@ public class SistemaDeReservas {
 
     public ArrayList<Servicio> getServicio() {
         return Servicio;
+    }
+     public ArrayList<RestauranteRanking> getRestauranteRanking() {
+        return RestauranteRanking;
     }
 
 // </editor-fold>  
@@ -105,9 +113,16 @@ public class SistemaDeReservas {
             }
         });
     }
+    public void AddRestauranteRanking(RestauranteRanking rr) {
+        RestauranteRanking.add(rr);
+    }
 // </editor-fold>  
 
     void EliminarSistema() {
         _instancia = null;
     }
+
+    
+
+    
 }

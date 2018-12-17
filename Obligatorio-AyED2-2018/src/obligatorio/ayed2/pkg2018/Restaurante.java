@@ -1,6 +1,6 @@
 package obligatorio.ayed2.pkg2018;
 
-public class Restaurante {
+public class Restaurante implements Comparable<Restaurante>{
 
     private String Ciudad;
     private String Nombre;
@@ -48,6 +48,11 @@ public class Restaurante {
         this.Nombre = Nombre;
         this.Puntaje = Puntaje;
         this.Capacidad = Capacidad;
+    }
+
+    @Override
+    public int compareTo(Restaurante o) {
+       return Nombre.compareTo(o.getNombre());
     }
 
 }

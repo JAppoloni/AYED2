@@ -151,12 +151,11 @@ public class Sistema {
     public TipoRet listarRestauranteCiudad(String Ciudad) {
         ArrayList<Restaurante> restaurantes = new ArrayList<Restaurante>(sistemaDeReservas.getRestaurante());
         boolean vacia = true;
-        System.out.println("Restaurantes en " + Ciudad);
-        for (Restaurante r : restaurantes) {
-            if (r.getCiudad().toUpperCase().equals(Ciudad.toUpperCase())) {
-                System.out.println(" - " + r.getNombre() + " Puntaje: " + r.getPuntaje() + " Ranking: " + calcularRanking(r.getNombre(), r.getCiudad()));
-                vacia = false;
-            }
+        System.out.println("Restaurantes en " + Ciudad+"\n");
+        Collections.sort(restaurantes);
+        for (Restaurante res : restaurantes) {
+            System.out.println(res.getNombre()+" - "+res.getPuntaje()+" - "+calcularRanking(res.getNombre(), Ciudad));
+            vacia=false;
         }
         if (!vacia) {
             return TipoRet.OK;
@@ -167,23 +166,31 @@ public class Sistema {
     }
 
     public TipoRet listarRestaurantesRanking() {
-        ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
-        Collections.sort(comentarios);
-        if (comentarios.isEmpty()) {
-            System.out.println("Ciudad - Restaurantes - Ranking \n");
-            int i = 1;
-            for (Comentario c : comentarios) {
-                System.out.println(i++ + " - " + c.getCiudad() + " - " + c.getRestaurante().getNombre() + " - " + calcularRanking(c.getRestaurante().getNombre(), c.getRestaurante().getCiudad()));
-            }
-            return TipoRet.OK;
-        } else {
-            System.out.println("No se encontraron datos");
-            return TipoRet.ERROR_1;
+        ArrayList<Restaurante> restaurantes = new ArrayList<Restaurante>(sistemaDeReservas.getRestaurante());
+        for (Restaurante r : restaurantes) {
+
+            RestauranteRanking rr = new RestauranteRanking();
+            rr.setCiudad(r.getCiudad());
+            rr.setNombre(r.getNombre());
+            rr.setRanking(calcularRanking(r.getNombre(), r.getCiudad()));
+            sistemaDeReservas.AddRestauranteRanking(rr);
+
         }
+        ArrayList<RestauranteRanking> rrs = new ArrayList<RestauranteRanking>(sistemaDeReservas.getRestauranteRanking());
+        Collections.sort(rrs);
+
+        System.out.println("Ciudad - Restaurantes - Ranking \n");
+        int i = 1;
+        for (RestauranteRanking rr : rrs) {
+            System.out.println(i++ + " - " + rr.getCiudad() + " - " + rr.getNombre() + " - " + rr.getRanking());
+        }
+        return TipoRet.OK;
+
     }
 
     public TipoRet listarComentarios(String Ciudad, String Restaurante) {
         ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
+        Collections.sort(comentarios, Collections.reverseOrder());
         boolean vacia = true;
         System.out.println("Comentarios de " + Restaurante + " en " + Ciudad + " : \n");
         for (Comentario c : comentarios) {
@@ -201,10 +208,12 @@ public class Sistema {
     }
 
     public TipoRet listarEspera(String Ciudad, String Restaurante) {
-        return TipoRet.NO_IMPLEMENTADA;
+        ArrayList<Reserva> reservas = new ArrayList<Reserva>(sistemaDeReservas.getReserva());
+        ArrayList<Restaurante> restaurantes = new ArrayList<Restaurante>(sistemaDeReservas.getRestaurante());
+        
     }
 
-    private String calcularRanking(String restaurante, String ciudad) {
+    private int calcularRanking(String restaurante, String ciudad) {
         ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
         int suma = 0;
         int aux = 0;
@@ -215,9 +224,9 @@ public class Sistema {
             }
         }
         if (aux > 0) {
-            return String.valueOf(suma / aux);
+            return suma / aux;
         } else {
-            return "No tiene comentarios";
+            return 0;
         }
     }
 
