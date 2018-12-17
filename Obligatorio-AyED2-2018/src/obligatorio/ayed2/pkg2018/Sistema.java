@@ -151,11 +151,11 @@ public class Sistema {
     public TipoRet listarRestauranteCiudad(String Ciudad) {
         ArrayList<Restaurante> restaurantes = new ArrayList<Restaurante>(sistemaDeReservas.getRestaurante());
         boolean vacia = true;
-        System.out.println("Restaurantes en " + Ciudad+"\n");
+        System.out.println("Restaurantes en " + Ciudad + "\n");
         Collections.sort(restaurantes);
         for (Restaurante res : restaurantes) {
-            System.out.println(res.getNombre()+" - "+res.getPuntaje()+" - "+calcularRanking(res.getNombre(), Ciudad));
-            vacia=false;
+            System.out.println(res.getNombre() + " - " + res.getPuntaje() + " - " + calcularRanking(res.getNombre(), Ciudad));
+            vacia = false;
         }
         if (!vacia) {
             return TipoRet.OK;
@@ -210,7 +210,33 @@ public class Sistema {
     public TipoRet listarEspera(String Ciudad, String Restaurante) {
         ArrayList<Reserva> reservas = new ArrayList<Reserva>(sistemaDeReservas.getReserva());
         ArrayList<Restaurante> restaurantes = new ArrayList<Restaurante>(sistemaDeReservas.getRestaurante());
-        
+        Restaurante unRestaurante = new Restaurante();
+        unRestaurante=null;
+        for (Restaurante res : restaurantes) {
+            if (res.getNombre().toUpperCase().equals(Restaurante.toUpperCase()) && res.getCiudad().toUpperCase().equals(Ciudad.toUpperCase())) {
+                unRestaurante = res;
+                break;
+            }
+        }
+        if(unRestaurante==null){
+            return TipoRet.ERROR_1;
+        }
+        int cantReservas = 0;
+        int numEspera = 0;
+        for (Reserva unaReserva : reservas) {
+            if (unaReserva.getRestaurante().equals(unRestaurante)) {
+                if (cantReservas <= unRestaurante.getCapacidad()) {
+                    cantReservas++;
+                } else {
+                    numEspera++;
+                    System.out.println(numEspera + " - " + unaReserva.getCI());
+                }
+            }
+        }
+        if (numEspera == 0) {
+            System.out.println("No existen reservas pendientes para el restaurante "+unRestaurante.getNombre()+" "+unRestaurante.getCiudad());
+        }
+        return TipoRet.OK;
     }
 
     private int calcularRanking(String restaurante, String ciudad) {

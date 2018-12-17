@@ -6,6 +6,9 @@ public class Restaurante implements Comparable<Restaurante>{
     private String Nombre;
     private int Puntaje;
     private int Capacidad;
+
+    public Restaurante() {
+    }
     
     // <editor-fold defaultstate="collapsed" desc=" Setters">   
     public void setCiudad(String Ciudad) {
