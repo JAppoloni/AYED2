@@ -43,7 +43,11 @@ public class Obligatorio_AyED2_2018 {
         p.ver(s.registrarRestaurante("Colonia", "Four Season", 5, 300), Sistema.TipoRet.OK, "Se agrega el restaurante Four Season de Colonia");
         p.ver(s.registrarRestaurante("Colonia", "Centro", 2, 20), Sistema.TipoRet.OK, "Se agrega el restaurante Centro de Colonia");
         p.ver(s.registrarRestaurante("Colonia", "Urbano", 2, 20), Sistema.TipoRet.ERROR_3, " Se espera ERROR:Se agrega el restaurante Urbano de Colonia");
-       s.listarRestaurantesRanking();
+        p.ver(s.registrarRestaurante("Montevideo", "Toto", 5, 25), Sistema.TipoRet.OK, "Se agrega el restaurante Toto de Montevideo");
+        p.ver(s.registrarRestaurante("Montevideo", "Tenedor", 5, 300), Sistema.TipoRet.OK, "Se agrega el restaurante tenedor de Montevideo");
+        p.ver(s.registrarRestaurante("Montevideo", "Centro", 4, 10), Sistema.TipoRet.OK, "Se agrega el restaurante Centro de Montevideo");
+        p.ver(s.registrarRestaurante("Montevideo", "Urbano", 7, 20), Sistema.TipoRet.ERROR_3, " Se espera ERROR:Se agrega el restaurante Urbano de Montevideo");
+        s.listarRestaurantesRanking();//No puede ir aca
         finPrueba(" Fin PRUEBA 1");
     }
     
@@ -52,12 +56,13 @@ public class Obligatorio_AyED2_2018 {
         System.out.println("Se crea el Sistema de Reservas vacio");
         tituloPrueba("PRUEBA 2: INGRESAR SERVICIO");
        
-        Restaurante pRestaurante = new Restaurante("Colonia", "Urbano", 2, 20);
+        Restaurante pRestaurante1 = new Restaurante("Colonia", "Urbano", 2, 20);
         
-        p.ver(s.ingresarServicio("Colonia",pRestaurante, "Desayuno continental"), Sistema.TipoRet.OK, "Se agrega Desayuno continental a restaurante Urbano de Colonia");
-        p.ver(s.ingresarServicio("Colonia", pRestaurante, "TV Cable"), Sistema.TipoRet.OK, "Se agrega TV Cable a restaurante Urbano de Colonia");
-        p.ver(s.ingresarServicio("Colonia",pRestaurante, "Servicio a la mesa"), Sistema.TipoRet.OK, "Se agrega Servicio a la mesa a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia",pRestaurante1, "Desayuno continental"), Sistema.TipoRet.OK, "Se agrega Desayuno continental a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia", pRestaurante1, "TV Cable"), Sistema.TipoRet.OK, "Se agrega TV Cable a restaurante Urbano de Colonia");
+        p.ver(s.ingresarServicio("Colonia",pRestaurante1, "Servicio a la mesa"), Sistema.TipoRet.OK, "Se agrega Servicio a la mesa a restaurante Urbano de Colonia");
         s.listarServicios("Colonia", "Urbano");
+        
         finPrueba(" Fin PRUEBA 2");
     }
     

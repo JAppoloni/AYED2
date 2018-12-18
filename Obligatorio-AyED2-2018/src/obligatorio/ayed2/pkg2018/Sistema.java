@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.ListIterator;
 
 public class Sistema {
 
@@ -190,12 +191,12 @@ public class Sistema {
 
     public TipoRet listarComentarios(String Ciudad, String Restaurante) {
         ArrayList<Comentario> comentarios = new ArrayList<Comentario>(sistemaDeReservas.getComentario());
-        Collections.sort(comentarios, Collections.reverseOrder());
         boolean vacia = true;
         System.out.println("Comentarios de " + Restaurante + " en " + Ciudad + " : \n");
-        for (Comentario c : comentarios) {
-            if (c.getCiudad().toUpperCase().equals(Ciudad.toUpperCase()) && c.getRestaurante().getNombre().toUpperCase().equals(Restaurante.toUpperCase())) {
-                System.out.println(" - " + c.getRestaurante().getNombre() + " Puntaje: " + c.getRestaurante().getPuntaje() + " Ranking: " + c.getRanking());
+        for (int i = comentarios.size() - 1; i <= 0; i--) {
+
+            if (comentarios.get(i).getCiudad().toUpperCase().equals(Ciudad.toUpperCase()) && comentarios.get(i).getRestaurante().getNombre().toUpperCase().equals(Restaurante.toUpperCase())) {
+                System.out.println(" - " + comentarios.get(i).getRestaurante().getNombre() + " Puntaje: " + comentarios.get(i).getRestaurante().getPuntaje() + " Ranking: " + comentarios.get(i).getRanking());
                 vacia = false;
             }
         }
@@ -211,14 +212,14 @@ public class Sistema {
         ArrayList<Reserva> reservas = new ArrayList<Reserva>(sistemaDeReservas.getReserva());
         ArrayList<Restaurante> restaurantes = new ArrayList<Restaurante>(sistemaDeReservas.getRestaurante());
         Restaurante unRestaurante = new Restaurante();
-        unRestaurante=null;
+        unRestaurante = null;
         for (Restaurante res : restaurantes) {
             if (res.getNombre().toUpperCase().equals(Restaurante.toUpperCase()) && res.getCiudad().toUpperCase().equals(Ciudad.toUpperCase())) {
                 unRestaurante = res;
                 break;
             }
         }
-        if(unRestaurante==null){
+        if (unRestaurante == null) {
             return TipoRet.ERROR_1;
         }
         int cantReservas = 0;
@@ -234,7 +235,7 @@ public class Sistema {
             }
         }
         if (numEspera == 0) {
-            System.out.println("No existen reservas pendientes para el restaurante "+unRestaurante.getNombre()+" "+unRestaurante.getCiudad());
+            System.out.println("No existen reservas pendientes para el restaurante " + unRestaurante.getNombre() + " " + unRestaurante.getCiudad());
         }
         return TipoRet.OK;
     }
