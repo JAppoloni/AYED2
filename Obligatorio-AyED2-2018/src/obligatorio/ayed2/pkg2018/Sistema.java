@@ -50,7 +50,7 @@ public class Sistema {
         caja_Negra = new Caja_Negra();
         Servicio pServicio = new Servicio(Ciudad, Restaurante, Servicio);
         ArrayList<Object> objectList = new ArrayList<Object>(sistemaDeReservas.getServicio());
-        if (caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) >= 0) {
+       if (caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) >= 0) {
             return TipoRet.ERROR_3;
         }
         if (objectList.isEmpty() || caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) < 0) {
@@ -65,7 +65,7 @@ public class Sistema {
         Servicio pServicio = new Servicio(Ciudad, Restaurante, Servicio);
         ArrayList<Object> objectList = new ArrayList<Object>(sistemaDeReservas.getServicio());
         caja_Negra = new Caja_Negra();
-        int ID = caja_Negra.binarySearch(objectList, pServicio, 0, sistemaDeReservas.getServicio().size());
+        int ID = caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(),Restaurante.getNombre(),Ciudad);
         if (ID < 0) {
             return TipoRet.ERROR_2;
         }

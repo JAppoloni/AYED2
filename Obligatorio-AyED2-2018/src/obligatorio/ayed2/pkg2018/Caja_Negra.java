@@ -34,8 +34,8 @@ public class Caja_Negra {
         }
 
         if (Comparador(Dato_A_Buscar, Lista.get(mid)) >= 0) {
-            if (mid==1 && ultimo==2){
-                return binarySearch(Lista, Dato_A_Buscar, 2, 2);
+            if (mid == (ultimo - 1)) {
+                return binarySearch(Lista, Dato_A_Buscar, ultimo, ultimo);
             }
             return binarySearch(Lista, Dato_A_Buscar, mid, ultimo);
         }
@@ -77,7 +77,7 @@ public class Caja_Negra {
             while (Comparador(Dato_A_Buscar, Lista.get(midI)) > 0) {
                 midI++;
                 if (Lista.size() <= midI) {
-                    midI = Lista.size()-1;
+                    midI = Lista.size() - 1;
                     break;
                 }
             }
@@ -124,8 +124,23 @@ public class Caja_Negra {
         }
 
         if (Comparador(Dato_A_Buscar, Lista.get(mid)) >= 0) {
+            if (mid == (ultimo - 1)) {
+                return Buscar_Por_Referecia_RestauranteyCiudad(Lista, Dato_A_Buscar, ultimo, ultimo, Restaurante, Ciudad);
+            }
             return Buscar_Por_Referecia_RestauranteyCiudad(Lista, Dato_A_Buscar, mid, ultimo, Restaurante, Ciudad);
         }
+        if (Comparador(Lista.get(mid), Dato_A_Buscar) == -777) {
+            try {
+                if (Iguales(Dato_A_Buscar, Lista.get(mid - 1)) && getRestaurante(Lista.get(mid - 1), Restaurante) && getCiudad(Lista.get(mid - 1), Ciudad)) {
+                    return mid - 1;
+                }
+                if (Iguales(Dato_A_Buscar, Lista.get(mid + 1)) && getRestaurante(Lista.get(mid + 1), Restaurante) && getCiudad(Lista.get(mid + 1), Ciudad)) {
+                    return mid + 1;
+                }
+            } catch (Exception e) {
+            }
+        }
+
         return Buscar_Por_Referecia_RestauranteyCiudad(Lista, Dato_A_Buscar, inicio, mid, Restaurante, Ciudad);
     }
 
@@ -146,6 +161,9 @@ public class Caja_Negra {
         }
 
         if (ComparadorObj_String(Lista.get(mid), Dato_A_Buscar) <= 0) {
+            if (mid == (ultimo - 1)) {
+                return Buscar_Por_Referecia_RestauranteyCiudad(Lista, Dato_A_Buscar, ultimo, ultimo, Ciudad);
+            }
             return Buscar_Por_Referecia_RestauranteyCiudad(Lista, Dato_A_Buscar, mid, ultimo, Ciudad);
         }
         return Buscar_Por_Referecia_RestauranteyCiudad(Lista, Dato_A_Buscar, inicio, mid, Ciudad);
@@ -247,24 +265,23 @@ public class Caja_Negra {
 
     public static int Comparador(String A, String B) {
         int length = A.length() > B.length() ? B.length() : A.length();
-        
-        for (int a=0; a<length;a++)
-        {
-            String a1 =""+ A.charAt(a);
-            String b= ""+B.charAt(a);
-            
+
+        for (int a = 0; a < length; a++) {
+            String a1 = "" + A.charAt(a);
+            String b = "" + B.charAt(a);
+
             int comp = a1.compareTo(b);
-            if (comp>0) // es menor
+            if (comp > 0) // es menor
             {
                 return 1;
             }
-            if (comp<0) // es mayor
+            if (comp < 0) // es mayor
             {
                 return -1;
             }
-            
+
         }
-        return 0;
+        return -777;
     }
 
     private static boolean getCiudad(Object ObjectA, String Ciudad) {
