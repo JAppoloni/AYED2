@@ -46,7 +46,7 @@ public class Obligatorio_AyED2_2018 {
         p.ver(s.registrarRestaurante("Montevideo", "Toto", 5, 25), Sistema.TipoRet.OK, "Se agrega el restaurante Toto de Montevideo");
         p.ver(s.registrarRestaurante("Montevideo", "Tenedor", 5, 300), Sistema.TipoRet.OK, "Se agrega el restaurante tenedor de Montevideo");
         p.ver(s.registrarRestaurante("Montevideo", "Centro", 4, 10), Sistema.TipoRet.OK, "Se agrega el restaurante Centro de Montevideo");
-        p.ver(s.registrarRestaurante("Montevideo", "Urbano", 7, 20), Sistema.TipoRet.ERROR_3, " Se espera ERROR:Se agrega el restaurante Urbano de Montevideo");
+        p.ver(s.registrarRestaurante("Montevideo", "Urbano", 7, 20), Sistema.TipoRet.ERROR_1, " Se espera ERROR:Se agrega el restaurante Urbano de Montevideo");
         s.listarRestaurantesRanking();//No puede ir aca
         finPrueba(" Fin PRUEBA 1");
     }

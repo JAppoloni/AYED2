@@ -34,6 +34,9 @@ public class Caja_Negra {
         }
 
         if (Comparador(Dato_A_Buscar, Lista.get(mid)) >= 0) {
+            if (mid==1 && ultimo==2){
+                return binarySearch(Lista, Dato_A_Buscar, 2, 2);
+            }
             return binarySearch(Lista, Dato_A_Buscar, mid, ultimo);
         }
         return binarySearch(Lista, Dato_A_Buscar, inicio, mid);

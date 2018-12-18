@@ -47,14 +47,13 @@ public class Sistema {
     }
 
     public TipoRet ingresarServicio(String Ciudad, Restaurante Restaurante, String Servicio) {
-
+        caja_Negra = new Caja_Negra();
         Servicio pServicio = new Servicio(Ciudad, Restaurante, Servicio);
         ArrayList<Object> objectList = new ArrayList<Object>(sistemaDeReservas.getServicio());
-        if (caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) > 0) {
-            caja_Negra = new Caja_Negra();
-            if (caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) >= 0) {
-                return TipoRet.ERROR_3;
-            }
+        if (caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) >= 0) {
+            return TipoRet.ERROR_3;
+        }
+        if (objectList.isEmpty() || caja_Negra.Buscar_Por_Referecia_RestauranteyCiudad(objectList, pServicio, 0, sistemaDeReservas.getServicio().size(), Restaurante.getNombre(), Ciudad) < 0) {
             sistemaDeReservas.AddServicio(pServicio);
             return TipoRet.OK;
         }
